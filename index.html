@@ -81,7 +81,18 @@ h2 {
 <header class="cabeza">
   <h1>🐞 DARKAKU WEB SERVICE</h1>
 </header>
-
+  
+<!-- BUSCADOR GOOGLE -->
+  <div class="busqueda">
+  <form action="https://www.google.com/search" method="GET" target="_blank">
+    <input type="text" name="q" placeholder="Buscar en Google..." 
+      style="padding:10px; width:80%; max-width:400px; border:1px solid #00ffcc; background:#000; color:#00ffcc;">
+    <button type="submit" style="padding:10px; background:#00ffcc; border:none; cursor:pointer;">
+      Google
+    </button>
+  </form>
+</div> 
+  
 <!-- BUSCADOR -->
 <div class="busqueda">
   <input type="text" id="buscador" placeholder="Buscar sitio..." onkeyup="buscar()">
