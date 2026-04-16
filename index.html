@@ -2,94 +2,161 @@
 <html lang="es">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Darkaku WEB Service</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Darkaku WEB Service</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      background-color: #0f0f0f;
-      color: #00ffcc;
-      font-family: Arial, sans-serif;
-      margin: 0;
-    }
+<style>
+body {
+  background: radial-gradient(circle at top, #0f0f0f, #000000);
+  color: #00ffcc;
+  font-family: 'Courier New', monospace;
+  margin: 0;
+  overflow-x: hidden;
+}
 
-    a {
-      color: #00ffcc;
-      text-decoration: none;
-    }
+/* HEADER */
+.cabeza {
+  text-align: center;
+  padding: 25px;
+  border-bottom: 1px solid #00ffcc;
+  text-shadow: 0 0 10px #00ffcc;
+}
 
-    a:hover {
-      color: #ffffff;
-    }
+h1 {
+  margin: 0;
+  font-size: 28px;
+}
 
-    .cabeza {
-      text-align: center;
-      padding: 20px;
-      border-bottom: 1px solid #00ffcc;
-    }
+/* TITULOS */
+h2 {
+  padding-left: 20px;
+  text-shadow: 0 0 5px #00ffcc;
+}
 
-    .malla {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-      gap: 10px;
-      padding: 20px;
-    }
+/* GRID */
+.malla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
 
-    .item img {
-      width: 100%;
-      border-radius: 10px;
-      transition: 0.3s;
-    }
+/* ICONOS */
+.item {
+  text-align: center;
+}
 
-    .item img:hover {
-      transform: scale(1.1);
-      border: 1px solid #00ffcc;
-    }
+.item img {
+  width: 60px;
+  transition: 0.3s;
+  filter: drop-shadow(0 0 3px #00ffcc);
+}
 
-    .pie {
-      text-align: center;
-      padding: 20px;
-      border-top: 1px solid #00ffcc;
-    }
-  </style>
+.item img:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 10px #00ffcc);
+}
+
+/* TEXTO ICONOS */
+.item span {
+  display: block;
+  font-size: 11px;
+  margin-top: 5px;
+}
+
+/* FOOTER */
+.pie {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #00ffcc;
+  text-shadow: 0 0 5px #00ffcc;
+}
+
+/* EFECTO MATRIX SUAVE */
+.matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.05;
+  font-size: 14px;
+  color: #00ffcc;
+  white-space: pre;
+}
+</style>
+
 </head>
 
 <body>
 
-  <header class="cabeza">
-    <h1>🐞 DARKAKU WEB SERVICE</h1>
-  </header>
+<div class="matrix" id="matrix"></div>
 
-  <div class="malla">
+<header class="cabeza">
+  <h1>🐞 DARKAKU WEB SERVICE</h1>
+</header>
 
-    <div class="item"><a href="https://www.google.com"><img src="https://www.google.com/favicon.ico"></a></div>
-    <div class="item"><a href="https://www.youtube.com"><img src="https://www.youtube.com/favicon.ico"></a></div>
-    <div class="item"><a href="https://www.facebook.com"><img src="https://www.facebook.com/favicon.ico"></a></div>
-    <div class="item"><a href="https://www.instagram.com"><img src="https://www.instagram.com/favicon.ico"></a></div>
-    <div class="item"><a href="https://chatgpt.com"><img src="https://chatgpt.com/favicon.ico"></a></div>
-    <div class="item"><a href="https://x.com"><img src="https://x.com/favicon.ico"></a></div>
-    <div class="item"><a href="https://www.amazon.com"><img src="https://www.amazon.com/favicon.ico"></a></div>
-    <div class="item"><a href="https://www.mercadolibre.cl"><img src="https://www.mercadolibre.cl/favicon.ico"></a></div>
-    <div class="item"><a href="https://www.bancochile.cl"><img src="https://www.bancochile.cl/favicon.ico"></a></div>
-    <div class="item"><a href="https://www.bancoestado.cl"><img src="https://www.bancoestado.cl/favicon.ico"></a></div>
-    <div class="item"><a href="https://www.santander.cl"><img src="https://www.santander.cl/favicon.ico"></a></div>
-    <div class="item"><a href="https://www.servipag.com"><img src="https://www.servipag.com/favicon.ico"></a></div>
-    <div class="item"><a href="https://www.biobiochile.cl"><img src="https://www.biobiochile.cl/favicon.ico"></a></div>
-    <div class="item"><a href="https://www.emol.com"><img src="https://www.emol.com/favicon.ico"></a></div>
-    <div class="item"><a href="https://www.latercera.com"><img src="https://www.latercera.com/favicon.ico"></a></div>
-    <div class="item"><a href="https://www.tiktok.com"><img src="https://www.tiktok.com/favicon.ico"></a></div>
-    <div class="item"><a href="https://www.reddit.com"><img src="https://www.reddit.com/favicon.ico"></a></div>
-    <div class="item"><a href="https://www.python.org"><img src="https://www.python.org/favicon.ico"></a></div>
-    <div class="item"><a href="https://developer.mozilla.org"><img src="https://developer.mozilla.org/favicon.ico"></a></div>
-    <div class="item"><a href="https://www.w3schools.com"><img src="https://www.w3schools.com/favicon.ico"></a></div>
+<!-- REDES -->
+<h2>🌐 Redes</h2>
+<div class="malla">
+  <div class="item"><a href="https://instagram.com"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"><span>Instagram</span></a></div>
+  <div class="item"><a href="https://facebook.com"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"><span>Facebook</span></a></div>
+  <div class="item"><a href="https://x.com"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png"><span>X</span></a></div>
+  <div class="item"><a href="https://tiktok.com"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"><span>TikTok</span></a></div>
+</div>
 
-  </div>
+<!-- BANCOS -->
+<h2>🏦 Bancos Chile</h2>
+<div class="malla">
+  <div class="item"><a href="https://bancoestado.cl"><img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png"><span>Estado</span></a></div>
+  <div class="item"><a href="https://bancochile.cl"><img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png"><span>Chile</span></a></div>
+  <div class="item"><a href="https://santander.cl"><img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png"><span>Santander</span></a></div>
+  <div class="item"><a href="https://bci.cl"><img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png"><span>BCI</span></a></div>
+</div>
 
-  <footer class="pie">
-    <h2>Chile - Darkaku Network ⚡</h2>
-  </footer>
+<!-- NOTICIAS -->
+<h2>📰 Noticias</h2>
+<div class="malla">
+  <div class="item"><a href="https://biobiochile.cl"><img src="https://cdn-icons-png.flaticon.com/512/21/21601.png"><span>BioBio</span></a></div>
+  <div class="item"><a href="https://emol.com"><img src="https://cdn-icons-png.flaticon.com/512/21/21601.png"><span>Emol</span></a></div>
+  <div class="item"><a href="https://latercera.com"><img src="https://cdn-icons-png.flaticon.com/512/21/21601.png"><span>La Tercera</span></a></div>
+  <div class="item"><a href="https://ciperchile.cl"><img src="https://cdn-icons-png.flaticon.com/512/21/21601.png"><span>CIPER</span></a></div>
+</div>
+
+<!-- IA -->
+<h2>🤖 IA</h2>
+<div class="malla">
+  <div class="item"><a href="https://chatgpt.com"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png"><span>ChatGPT</span></a></div>
+  <div class="item"><a href="https://claude.ai"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png"><span>Claude</span></a></div>
+  <div class="item"><a href="https://grok.com"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png"><span>Grok</span></a></div>
+</div>
+
+<!-- TIENDAS -->
+<h2>🛒 Tiendas</h2>
+<div class="malla">
+  <div class="item"><a href="https://mercadolibre.cl"><img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"><span>MercadoLibre</span></a></div>
+  <div class="item"><a href="https://falabella.cl"><img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"><span>Falabella</span></a></div>
+  <div class="item"><a href="https://ripley.cl"><img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"><span>Ripley</span></a></div>
+  <div class="item"><a href="https://paris.cl"><img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"><span>Paris</span></a></div>
+</div>
+
+<footer class="pie">
+  ⚡ Darkaku Network - Chile ⚡
+</footer>
+
+<script>
+const matrix = document.getElementById("matrix");
+const chars = "01アカサタナハマヤラワ";
+let output = "";
+
+for (let i = 0; i < 300; i++) {
+  output += chars[Math.floor(Math.random() * chars.length)] + " ";
+}
+
+matrix.innerText = output;
+</script>
 
 </body>
-
 </html>
