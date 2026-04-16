@@ -8,154 +8,141 @@
 
 <style>
 body {
-  background: radial-gradient(circle at top, #0f0f0f, #000000);
+  background: radial-gradient(circle at top, #0f0f0f, #000);
   color: #00ffcc;
   font-family: 'Courier New', monospace;
   margin: 0;
-  overflow-x: hidden;
 }
 
-/* HEADER */
 .cabeza {
   text-align: center;
-  padding: 25px;
+  padding: 20px;
   border-bottom: 1px solid #00ffcc;
-  text-shadow: 0 0 10px #00ffcc;
+  text-shadow: 0 0 8px #00ffcc;
 }
 
-h1 {
-  margin: 0;
-  font-size: 28px;
-}
-
-/* TITULOS */
 h2 {
   padding-left: 20px;
   text-shadow: 0 0 5px #00ffcc;
 }
 
-/* GRID */
+.busqueda {
+  text-align: center;
+  padding: 15px;
+}
+
+.busqueda input {
+  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+  border: 1px solid #00ffcc;
+  background: #000;
+  color: #00ffcc;
+}
+
 .malla {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
   gap: 15px;
   padding: 20px;
 }
 
-/* ICONOS */
 .item {
   text-align: center;
 }
 
 .item img {
-  width: 60px;
+  width: 55px;
   transition: 0.3s;
-  filter: drop-shadow(0 0 3px #00ffcc);
+  filter: drop-shadow(0 0 4px #00ffcc);
 }
 
 .item img:hover {
   transform: scale(1.2);
-  filter: drop-shadow(0 0 10px #00ffcc);
+  filter: drop-shadow(0 0 12px #00ffcc);
 }
 
-/* TEXTO ICONOS */
 .item span {
   display: block;
   font-size: 11px;
   margin-top: 5px;
 }
 
-/* FOOTER */
 .pie {
   text-align: center;
   padding: 20px;
   border-top: 1px solid #00ffcc;
-  text-shadow: 0 0 5px #00ffcc;
-}
-
-/* EFECTO MATRIX SUAVE */
-.matrix {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0.05;
-  font-size: 14px;
-  color: #00ffcc;
-  white-space: pre;
 }
 </style>
-
 </head>
 
 <body>
-
-<div class="matrix" id="matrix"></div>
 
 <header class="cabeza">
   <h1>🐞 DARKAKU WEB SERVICE</h1>
 </header>
 
-<!-- REDES -->
-<h2>🌐 Redes</h2>
-<div class="malla">
-  <div class="item"><a href="https://instagram.com"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"><span>Instagram</span></a></div>
-  <div class="item"><a href="https://facebook.com"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png"><span>Facebook</span></a></div>
-  <div class="item"><a href="https://x.com"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png"><span>X</span></a></div>
-  <div class="item"><a href="https://tiktok.com"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"><span>TikTok</span></a></div>
-</div>
-
-<!-- BANCOS -->
-<h2>🏦 Bancos Chile</h2>
-<div class="malla">
-  <div class="item"><a href="https://bancoestado.cl"><img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png"><span>Estado</span></a></div>
-  <div class="item"><a href="https://bancochile.cl"><img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png"><span>Chile</span></a></div>
-  <div class="item"><a href="https://santander.cl"><img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png"><span>Santander</span></a></div>
-  <div class="item"><a href="https://bci.cl"><img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png"><span>BCI</span></a></div>
-</div>
-
-<!-- NOTICIAS -->
-<h2>📰 Noticias</h2>
-<div class="malla">
-  <div class="item"><a href="https://biobiochile.cl"><img src="https://cdn-icons-png.flaticon.com/512/21/21601.png"><span>BioBio</span></a></div>
-  <div class="item"><a href="https://emol.com"><img src="https://cdn-icons-png.flaticon.com/512/21/21601.png"><span>Emol</span></a></div>
-  <div class="item"><a href="https://latercera.com"><img src="https://cdn-icons-png.flaticon.com/512/21/21601.png"><span>La Tercera</span></a></div>
-  <div class="item"><a href="https://ciperchile.cl"><img src="https://cdn-icons-png.flaticon.com/512/21/21601.png"><span>CIPER</span></a></div>
+<!-- BUSCADOR -->
+<div class="busqueda">
+  <input type="text" id="buscador" placeholder="Buscar sitio..." onkeyup="buscar()">
 </div>
 
 <!-- IA -->
 <h2>🤖 IA</h2>
 <div class="malla">
-  <div class="item"><a href="https://chatgpt.com"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png"><span>ChatGPT</span></a></div>
-  <div class="item"><a href="https://claude.ai"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png"><span>Claude</span></a></div>
-  <div class="item"><a href="https://grok.com"><img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png"><span>Grok</span></a></div>
+  <div class="item"><a href="https://chatgpt.com" target="_blank"><div style="font-size:35px;">🤍</div><span>ChatGPT</span></a></div>
+  <div class="item"><a href="https://gemini.google.com" target="_blank"><div style="font-size:35px;">🤖</div><span>Gemini</span></a></div>
+  <div class="item"><a href="https://claude.ai" target="_blank"><div style="font-size:35px;">🧠</div><span>Claude</span></a></div>
 </div>
 
-<!-- TIENDAS -->
-<h2>🛒 Tiendas</h2>
+<!-- REDES -->
+<h2>🌐 Redes</h2>
 <div class="malla">
-  <div class="item"><a href="https://mercadolibre.cl"><img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"><span>MercadoLibre</span></a></div>
-  <div class="item"><a href="https://falabella.cl"><img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"><span>Falabella</span></a></div>
-  <div class="item"><a href="https://ripley.cl"><img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"><span>Ripley</span></a></div>
-  <div class="item"><a href="https://paris.cl"><img src="https://cdn-icons-png.flaticon.com/512/1170/1170678.png"><span>Paris</span></a></div>
+  <div class="item"><a href="https://instagram.com" target="_blank"><div style="font-size:35px;">📸</div><span>Instagram</span></a></div>
+  <div class="item"><a href="https://facebook.com" target="_blank"><div style="font-size:35px;">📘</div><span>Facebook</span></a></div>
+  <div class="item"><a href="https://x.com" target="_blank"><div style="font-size:35px;">𝕏</div><span>X</span></a></div>
+  <div class="item"><a href="https://web.whatsapp.com" target="_blank"><div style="font-size:35px;">💬</div><span>WhatsApp</span></a></div>
+</div>
+
+<!-- BANCOS -->
+<h2>🏦 Bancos</h2>
+<div class="malla">
+  <div class="item"><a href="https://bancoestado.cl" target="_blank"><div style="font-size:35px;">🏦</div><span>Estado</span></a></div>
+  <div class="item"><a href="https://bancochile.cl" target="_blank"><div style="font-size:35px;">🏦</div><span>Chile</span></a></div>
+  <div class="item"><a href="https://santander.cl" target="_blank"><div style="font-size:35px;">🏦</div><span>Santander</span></a></div>
+  <div class="item"><a href="https://bci.cl" target="_blank"><div style="font-size:35px;">🏦</div><span>BCI</span></a></div>
+</div>
+
+<!-- VIAJES -->
+<h2>✈️ Viajes</h2>
+<div class="malla">
+  <div class="item"><a href="https://www.google.com/travel/flights" target="_blank"><div style="font-size:35px;">✈️</div><span>Vuelos</span></a></div>
+  <div class="item"><a href="https://www.latamairlines.com" target="_blank"><div style="font-size:35px;">🛫</div><span>LATAM</span></a></div>
+  <div class="item"><a href="https://www.booking.com" target="_blank"><div style="font-size:35px;">🏨</div><span>Booking</span></a></div>
+</div>
+
+<!-- PAGOS -->
+<h2>💸 Pagos</h2>
+<div class="malla">
+  <div class="item"><a href="https://www.servipag.com" target="_blank"><div style="font-size:35px;">💳</div><span>Servipag</span></a></div>
+  <div class="item"><a href="https://www.correos.cl" target="_blank"><div style="font-size:35px;">📮</div><span>Correos</span></a></div>
 </div>
 
 <footer class="pie">
-  ⚡ Darkaku Network - Chile ⚡
+  ⚡ Darkaku Portal - Chile ⚡
 </footer>
 
+<!-- BUSCADOR SCRIPT -->
 <script>
-const matrix = document.getElementById("matrix");
-const chars = "01アカサタナハマヤラワ";
-let output = "";
+function buscar() {
+  let input = document.getElementById("buscador").value.toLowerCase();
+  let items = document.getElementsByClassName("item");
 
-for (let i = 0; i < 300; i++) {
-  output += chars[Math.floor(Math.random() * chars.length)] + " ";
+  for (let i = 0; i < items.length; i++) {
+    let texto = items[i].innerText.toLowerCase();
+    items[i].style.display = texto.includes(input) ? "" : "none";
+  }
 }
-
-matrix.innerText = output;
 </script>
 
 </body>
