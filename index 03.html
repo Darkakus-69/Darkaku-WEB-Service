@@ -1,1 +1,300 @@
+<!DOCTYPE html>
 
+<html lang="es">
+
+<head>
+<meta charset="UTF-8">
+<title>Darkaku WEB Service</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+
+<style>
+
+/* FONDO CON LOGO */
+body {
+  margin: 0;
+  font-family: 'Orbitron', monospace;
+  color: #00ffcc;
+
+  background-image: url("darkaku.png");
+  background-size: 80%; /* un poco más chico como querías */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* CAPA OSCURA */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.75);
+  z-index: 0;
+}
+
+/* MATRIX */
+#matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* CONTENIDO ENCIMA */
+.cabeza, .busqueda, .malla, h2, .pie {
+  position: relative;
+  z-index: 2;
+}
+
+/* HEADER */
+.cabeza {
+  text-align: center;
+  padding: 20px;
+}
+
+/* TITULO PRO */
+.titulo {
+  font-size: 32px;
+  letter-spacing: 3px;
+  color: #00ffcc;
+
+  text-shadow:
+    0 0 5px #00ffcc,
+    0 0 10px #00ffcc,
+    0 0 20px #00ffcc,
+    0 0 40px #00ffaa;
+
+  animation: brillo 2s infinite alternate;
+}
+
+@keyframes brillo {
+  from {
+    text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc;
+  }
+  to {
+    text-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffaa;
+  }
+}
+
+/* SECCIONES */
+h2 {
+  padding-left: 20px;
+  text-shadow: 0 0 5px #00ffcc;
+}
+
+/* BUSCADOR */
+.busqueda {
+  text-align: center;
+  padding: 10px;
+}
+
+.busqueda input {
+  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+  border: 1px solid #00ffcc;
+  background: #000;
+  color: #00ffcc;
+}
+
+/* GRID */
+.malla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.item {
+  text-align: center;
+}
+
+.item img {
+  width: 50px;
+  filter: drop-shadow(0 0 5px #00ffcc);
+  transition: 0.3s;
+}
+
+.item img:hover {
+  transform: scale(1.2);
+}
+
+.item span {
+  display: block;
+  font-size: 11px;
+}
+
+/* FOOTER */
+.pie {
+  text-align: center;
+  padding: 20px;
+  border-top: 1px solid #00ffcc;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- MATRIX -->
+
+<canvas id="matrix"></canvas>
+
+<header class="cabeza">
+  <h1 class="titulo">DARKAKU WEB SERVICE</h1>
+</header>
+
+<!-- BUSCADOR GOOGLE -->
+
+<div class="busqueda">
+  <form action="https://www.google.com/search" method="GET" target="_blank">
+    <input type="text" name="q" placeholder="Buscar en Google...">
+  </form>
+</div>
+
+<!-- BUSCADOR INTERNO -->
+
+<div class="busqueda">
+  <input type="text" id="buscador" placeholder="Buscar dentro del portal..." onkeyup="buscar()">
+</div>
+
+<h2> Tiendas</h2>
+<div class="malla">
+  <div class="item"><a href="https://mercadolibre.cl" target="_blank"><span>MercadoLibre</span></a></div>
+  <div class="item"><a href="https://falabella.cl" target="_blank"><span>Falabella</span></a></div>
+  <div class="item"><a href="https://ripley.cl" target="_blank"><span>Ripley</span></a></div>
+  <div class="item"><a href="https://paris.cl" target="_blank"><span>Paris</span></a></div>
+  <div class="item"><a href="https://www.tricot.cl/" target="_blank"><span>Trico</span></a></div>
+  <div class="item"><a href="https://cl.hm.com" target="_blank"><span>HyM</span></a></div>
+  <div class="item"><a href="https://easy.cl" target="_blank"><span>Easy</span></a></div>
+  <div class="item"><a href="https://sodimac.cl" target="_blank"><span>sodimac</span></a></div>
+  <div class="item"><a href="https://construmart.cl" target="_blank"><span>construmart</span></a></div>
+  <div class="item"><a href="https://imperial.cl" target="_blank"><span>imperial</span></a></div>
+</div>
+
+<h2> Supermercados</h2>
+<div class="malla">
+  <div class="item"><a href="https://lider.cl" target="_blank"><span> Lider</span></a></div>
+  <div class="item"><a href="https://jumbo.cl" target="_blank"><span> Jumbo</span></a></div>
+  <div class="item"><a href="https://tottus.cl" target="_blank"><span> Tottus</span></a></div>
+  <div class="item"><a href="https://santaisabel.cl" target="_blank"><span> Santa Isabel</span></a></div>
+ </div>
+  
+  <h2> Online Shopping</h2>
+<div class="malla">
+  <div class="item"><a href="https://mercadolibre.com" target="_blank"><span> Mercadolibre</span></a></div>
+  <div class="item"><a href="https://amazon.com" target="_blank"><span> Amazon</span></a></div>
+  <div class="item"><a href="https://aliexpress.com" target="_blank"><span> Aliexpress</span></a></div>
+  <div class="item"><a href="https://ebay.com" target="_blank"><span> E-bay</span></a></div>
+  <div class="item"><a href="https://cl.shein.com" target="_blank"><span>Shein</span></a></div>
+  <div class="item"><a href="https://temu.com" target="_blank"><span>Temu</span></a></div>
+ </div>
+  
+  <h2> Inteligencia Artificial</h2>
+<div class="malla">
+  <div class="item"><a href="https://chatgpt.com" target="_blank"><span> ChatGPT</span></a></div>
+  <div class="item"><a href="https://gemini.google.com" target="_blank"><span> Gemini</span></a></div>
+  <div class="item"><a href="https://claude.ai" target="_blank"><span> Claude</span></a></div>
+</div>
+
+<h2> Redes</h2>
+<div class="malla">
+  <div class="item"><a href="https://instagram.com" target="_blank"><span>Instagram</span></a></div>
+  <div class="item"><a href="https://facebook.com" target="_blank"><span>Facebook</span></a></div>
+  <div class="item"><a href="https://x.com" target="_blank"><span>X</span></a></div>
+  <div class="item"><a href="https://web.whatsapp.com" target="_blank"><span>WhatsApp</span></a></div>
+</div>
+
+<h2> Bancos</h2>
+<div class="malla">
+  <div class="item"><a href="https://www.bancoestado.cl" target="_blank"><span>Estado</span></a></div>
+  <div class="item"><a href="https://www.bancochile.cl" target="_blank"><span>Chile</span></a></div>
+  <div class="item"><a href="https://banco.santander.cl" target="_blank"><span>Santander</span></a></div>
+  <div class="item"><a href="https://www.bci.cl" target="_blank"><span>BCI</span></a></div>
+</div>
+
+<h2> Viajes</h2>
+<div class="malla">
+  <div class="item"><a href="https://www.google.com/travel/flights" target="_blank"><span>Vuelos</span></a></div>
+  <div class="item"><a href="https://www.latamairlines.com" target="_blank"><span>LATAM</span></a></div>
+  <div class="item"><a href="https://www.booking.com" target="_blank"><span>Booking</span></a></div>
+</div>
+
+<h2> Servicios</h2>
+<div class="malla">
+  <div class="item"><a href="https://www.servipag.com" target="_blank"><span>Servipag</span></a></div>
+  <div class="item"><a href="https://www.correos.cl" target="_blank"><span>Correos</span></a></div>
+</div>
+
+<footer class="pie">
+  ⚡ Darkaku Portal ⚡
+</footer>
+
+<script>
+
+/* BUSCADOR */
+function buscar() {
+  let input = document.getElementById("buscador").value.toLowerCase();
+  let items = document.getElementsByClassName("item");
+
+  for (let i = 0; i < items.length; i++) {
+    let texto = items[i].innerText.toLowerCase();
+    items[i].style.display = texto.includes(input) ? "" : "none";
+  }
+}
+
+/* MATRIX ROJO */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+const letras = "0123456789";
+const fontSize = 16;
+const columnas = canvas.width / fontSize;
+
+const gotas = [];
+
+for (let i = 0; i < columnas; i++) {
+  gotas[i] = 1;
+}
+
+function dibujar() {
+  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#ff0000";
+  ctx.font = fontSize + "px monospace";
+
+  for (let i = 0; i < gotas.length; i++) {
+    const texto = letras.charAt(Math.floor(Math.random() * letras.length));
+    ctx.fillText(texto, i * fontSize, gotas[i] * fontSize);
+
+    if (gotas[i] * fontSize > canvas.height && Math.random() > 0.975) {
+      gotas[i] = 0;
+    }
+
+    gotas[i]++;
+  }
+}
+
+setInterval(dibujar, 33);
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+</script>
+
+</body>
+</html>
