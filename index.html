@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 
 <head>
@@ -6,7 +7,6 @@
 <title>Darkaku WEB Service</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- FUENTE FUTURISTA -->
 <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
 
 <style>
@@ -18,7 +18,7 @@ body {
   color: #00ffcc;
 
   background-image: url("darkaku.png");
-  background-size: 100%;
+  background-size: 80%; /* un poco más chico como querías */
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -32,8 +32,25 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.75); /* ajusta 0.6 - 0.85 */
-  z-index: -1;
+  background: rgba(0,0,0,0.75);
+  z-index: 0;
+}
+
+/* MATRIX */
+#matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* CONTENIDO ENCIMA */
+.cabeza, .busqueda, .malla, h2, .pie {
+  position: relative;
+  z-index: 2;
 }
 
 /* HEADER */
@@ -122,15 +139,21 @@ h2 {
 }
 
 </style>
+
 </head>
 
 <body>
+
+<!-- MATRIX -->
+
+<canvas id="matrix"></canvas>
 
 <header class="cabeza">
   <h1 class="titulo">DARKAKU WEB SERVICE</h1>
 </header>
 
 <!-- BUSCADOR GOOGLE -->
+
 <div class="busqueda">
   <form action="https://www.google.com/search" method="GET" target="_blank">
     <input type="text" name="q" placeholder="Buscar en Google...">
@@ -138,11 +161,11 @@ h2 {
 </div>
 
 <!-- BUSCADOR INTERNO -->
+
 <div class="busqueda">
   <input type="text" id="buscador" placeholder="Buscar dentro del portal..." onkeyup="buscar()">
 </div>
 
-<!-- TIENDAS -->
 <h2>🛒 Tiendas</h2>
 <div class="malla">
   <div class="item"><a href="https://mercadolibre.cl" target="_blank"><span>MercadoLibre</span></a></div>
@@ -151,7 +174,6 @@ h2 {
   <div class="item"><a href="https://paris.cl" target="_blank"><span>Paris</span></a></div>
 </div>
 
-<!-- IA -->
 <h2>🤖 IA</h2>
 <div class="malla">
   <div class="item"><a href="https://chatgpt.com" target="_blank"><span>🤍 ChatGPT</span></a></div>
@@ -159,7 +181,6 @@ h2 {
   <div class="item"><a href="https://claude.ai" target="_blank"><span>🧠 Claude</span></a></div>
 </div>
 
-<!-- REDES -->
 <h2>🌐 Redes</h2>
 <div class="malla">
   <div class="item"><a href="https://instagram.com" target="_blank"><span>Instagram</span></a></div>
@@ -168,16 +189,14 @@ h2 {
   <div class="item"><a href="https://web.whatsapp.com" target="_blank"><span>WhatsApp</span></a></div>
 </div>
 
-<!-- BANCOS -->
 <h2>🏦 Bancos</h2>
 <div class="malla">
   <div class="item"><a href="https://www.bancoestado.cl" target="_blank"><span>Estado</span></a></div>
-  <div class="item"><a href="https://bancochile.cl" target="_blank"><span>Chile</span></a></div>
+  <div class="item"><a href="https://www.bancochile.cl" target="_blank"><span>Chile</span></a></div>
   <div class="item"><a href="https://banco.santander.cl" target="_blank"><span>Santander</span></a></div>
-  <div class="item"><a href="https://bci.cl" target="_blank"><span>BCI</span></a></div>
+  <div class="item"><a href="https://www.bci.cl" target="_blank"><span>BCI</span></a></div>
 </div>
 
-<!-- VIAJES -->
 <h2>✈️ Viajes</h2>
 <div class="malla">
   <div class="item"><a href="https://www.google.com/travel/flights" target="_blank"><span>Vuelos</span></a></div>
@@ -185,7 +204,6 @@ h2 {
   <div class="item"><a href="https://www.booking.com" target="_blank"><span>Booking</span></a></div>
 </div>
 
-<!-- SERVICIOS -->
 <h2>💸 Servicios</h2>
 <div class="malla">
   <div class="item"><a href="https://www.servipag.com" target="_blank"><span>Servipag</span></a></div>
@@ -196,8 +214,9 @@ h2 {
   ⚡ Darkaku Portal ⚡
 </footer>
 
-<!-- BUSCADOR SCRIPT -->
 <script>
+
+/* BUSCADOR */
 function buscar() {
   let input = document.getElementById("buscador").value.toLowerCase();
   let items = document.getElementsByClassName("item");
@@ -207,6 +226,50 @@ function buscar() {
     items[i].style.display = texto.includes(input) ? "" : "none";
   }
 }
+
+/* MATRIX ROJO */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+const letras = "0123456789";
+const fontSize = 16;
+const columnas = canvas.width / fontSize;
+
+const gotas = [];
+
+for (let i = 0; i < columnas; i++) {
+  gotas[i] = 1;
+}
+
+function dibujar() {
+  ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#ff0000";
+  ctx.font = fontSize + "px monospace";
+
+  for (let i = 0; i < gotas.length; i++) {
+    const texto = letras.charAt(Math.floor(Math.random() * letras.length));
+    ctx.fillText(texto, i * fontSize, gotas[i] * fontSize);
+
+    if (gotas[i] * fontSize > canvas.height && Math.random() > 0.975) {
+      gotas[i] = 0;
+    }
+
+    gotas[i]++;
+  }
+}
+
+setInterval(dibujar, 33);
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
 </script>
 
 </body>
